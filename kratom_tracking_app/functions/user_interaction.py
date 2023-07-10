@@ -1,3 +1,6 @@
+import time
+import random
+
 def display_menu(): 
     print("\n\n")
     print("+++ === +++ === +++ === +++ === +++")
@@ -29,8 +32,24 @@ def process_menu_choice(choice):
         print("+++ === +++ === +++ === +++ ==\n")
         
 def log_dose():
-    #?implement to login to log a dose
-    pass
+    print("=== +++ Log Dose +++ ===")
+    
+    quantity_type = input("Enter the quantity type:  (grams, teaspoons, extract): ")
+    quantity = float(input("Enter the quantity: "))
+    
+    timestamp = data_maniulation.log_dose(quantity_type, quantity)
+    
+    #! Print the timestamp of the logged dose
+    print("Dose logged successfully at {}".format(timestamp))
+    
+    #! Print the analytics of the logged dose
+    print(f"Total Doses: {analytics.calculate_total_doses()}")
+    
+    print(f"Time since last dose: {analytics.calculate_time_since_last_dose(timestamp)}")
+    
+    print(f"Number of doses today: {analytics.calculate_doses_today()}")
+    
+    time.sleep(0.5) #? Add a delay to make the output more readable
 
 def view_dose_data(): 
     #? Implement the log to view dose data
@@ -39,6 +58,24 @@ def view_dose_data():
 def calculate_analytics():
     #?Implement the logic to calculate analytics
     pass
+
+def print_encouraging_quote():
+    quotes = [
+        'Stay strong my guy',
+        'You got this pal',
+        "Believe in yourself. You've got this",
+        'You are a beast my friend',
+         "Every step counts. You're making progress!",
+        "Don't give up. You're stronger than you think!",
+        "Stay positive and keep going!",
+        "You're doing great! Keep it up!",
+    ]
+    
+    quote = random.choice(quotes)
+    print("+++ === +++ === +++ === +++ === +++")
+    print("=== +++ Encouraging Quote: +++ ===")
+    print(f"{quote}\n")
+    time.sleep(0.5)
 
 if __name__ == "__main__":
     display_menu()
