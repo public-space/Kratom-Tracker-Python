@@ -1,4 +1,5 @@
 def display_menu(): 
+    print("\n\n")
     print("+++ === +++ === +++ === +++ === +++")
     print("=== +++ Kratom Tracking App +++ ===")
     print("+++ === +++ === +++ === +++ === +++")
@@ -6,7 +7,7 @@ def display_menu():
     print("2. View Dose Data")
     print("3. Calculate Analytics")
     print("0. Exit")
-    print("+++ === +++ === +++ === +++ === +++\n")
+    print("+++ === +++ === +++ === +++ === +++\n\n")
      
 def process_menu_choice(choice): 
     if choice == "1":
@@ -37,3 +38,5 @@ def calculate_analytics():
     #?Implement the logic to calculate analytics
     pass
 
+if __name__ == "__main__":
+    display_menu()
