@@ -26,7 +26,7 @@ def process_menu_choice(choice):
         print("+++ === +++ === +++ === +++ === +++")
         print("Invalid choice boyo. Please try again. :)")
         print("INVALID CHOICE MY GUY --- INVALID CHOICE MY GUY ---")
-        print("+++ === +++ === +++ === +++ === +++\n")
+        print("+++ === +++ === +++ === +++ ==\n")
         
 def log_dose():
     #?implement to login to log a dose
