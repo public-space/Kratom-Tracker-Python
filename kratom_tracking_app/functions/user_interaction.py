@@ -22,8 +22,10 @@ def process_menu_choice(choice):
     elif choice == "0":
         exit()
     else:
+        print("\n\n")
         print("+++ === +++ === +++ === +++ === +++")
         print("Invalid choice boyo. Please try again. :)")
+        print("INVALID CHOICE MY GUY --- INVALID CHOICE MY GUY ---")
         print("+++ === +++ === +++ === +++ === +++\n")
         
 def log_dose():
