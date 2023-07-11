@@ -4,7 +4,7 @@ from datetime import datetime
 def log_dose(quantity_type, quantity):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    connection = sqlite3.connect("../database/kratom.db")
+    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
     cursor = connection.cursor()
     
     #! Insert the dose into the "doses" table
@@ -17,7 +17,7 @@ def log_dose(quantity_type, quantity):
     return timestamp()
     
 def get_dose_data():
-    connection = sqlite3.connect("../database/kratom.db")
+    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
     cursor = connection.cursor()
     
     # Retrieve all dose data from the 'doses' table

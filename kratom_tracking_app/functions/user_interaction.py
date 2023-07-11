@@ -1,9 +1,12 @@
 import time
 import random
-from colorama import Fore, Style
-
+import sys
+from colorama import Fore, Back, Style
+from functions import data_manipulation, analytics
 
 #?---------------------Menu Functions---------------------# 
+
+#!-------------- Display Menu-------------!#
 
 def display_menu(): 
     time.sleep(1)
@@ -17,36 +20,38 @@ def display_menu():
     print("0. Exit")
     print("+++ === +++ === +++ === +++ === +++\n\n")
     time.sleep(0.5)
-     
+    
+#!-------------- Process Menu Choices-------------!#
+
 def process_menu_choice(choice): 
     if choice == "1":
-        #? Call the function to log a dose
-        pass
+        log_dose()
     elif choice == "2":
-        #? Call the function to view dose data
-        pass
+        view_dose_data()
     elif choice == "3":
-        #? Call the function to calculate analytics
-        pass
+        calculate_analytics()
     elif choice == "0":
-        exit()
+        print(Fore.BLUE + "Goodbye my guy. Stay strong. You got this. :" + Style.RESET_ALL)
+        sys.exit()
     else:
-        print("\n\n")
+        print(Fore.RED + Back.BLACK + "\n\n")
         print("+++ === +++ === +++ === +++ === +++")
         print("Invalid choice boyo. Please try again. :)")
         print("INVALID CHOICE MY GUY --- INVALID CHOICE MY GUY ---")
-        print("+++ === +++ === +++ === +++ ==\n")
+        print("+++ === +++ === +++ === +++ ==\n" + Style.RESET_ALL)
         time.sleep(0.5)
        
 #?---------------------Dose  Functions---------------------# 
 
+#!--------------------Log Dose--------------------#
+ 
 def log_dose():
     print("=== +++ Log Dose +++ ===")
     
     quantity_type = input("Enter the quantity type:  (grams, teaspoons, extract): ")
     quantity = float(input("Enter the quantity: "))
     
-    timestamp = data_maniulation.log_dose(quantity_type, quantity)
+    timestamp = data_manipulation.log_dose(quantity_type, quantity)
     
     #! Print the timestamp of the logged dose
     print("Dose logged successfully at {}".format(timestamp))
@@ -60,6 +65,8 @@ def log_dose():
     
     time.sleep(0.5) #? Add a delay to make the output more readable
 
+#!--------------------calculate time since last dose--------------------# 
+
 def calculate_time_since_last_dose(last_dose_timestamp):
     last_dose_time = datetime.strptime(last_dose_timestamp, "%Y-%m-%d %H:%M:%S")
     
@@ -71,14 +78,41 @@ def calculate_time_since_last_dose(last_dose_timestamp):
     
     return f"{int(hours)} hours, {int(minutes % 60)} minutes, {int(seconds % 60)} seconds"
     
-    
+
+#!--------------------View Dose Data--------------------# 
+
 def view_dose_data(): 
-    #? Implement the log to view dose data
-    pass
+    print("=== +++ View Dose Data +++ ===")
+    
+    dose_data = get_dose_data()
+    
+    print("+++ === +++ === +++ === +++ === +++")
+    print("ID  | Timestamp          | Quantity")
+    print("-----------------------------------")  
+    # Iterate through each dose in the dose_data list
+    for dose in dose_data: 
+        # Format and print each dose information in a row
+        print(f"{dose[0]:<4} |   {dose[1]:19}  |  {dose[2]:.2f}\n")
+    
+    time.sleep(0.5)
+
+
+#!--------------------Calculate Analytics--------------------# 
 
 def calculate_analytics():
-    #?Implement the logic to calculate analytics
-    pass
+    print("=== +++ Calculate Analytics +++ ===")
+    
+    total_doses = analytics.calculate_total_doses()
+    last_dose_timestamp = analytics.get_last_dose_timestamp()
+    time_since_last_dose = analytics.calculate_time_since_last_dose(last_dose_timestamp)
+    doses_today = analytics.calculate_doses_today()
+    
+    print("+++ === +++ === +++ === +++ === +++")
+    print("Total Doses: {}".format(total_doses))
+    print("Time since last dose: {}".format(time_since_last_dose))
+    print(f"Number of doses today: {doses_today}\n")  
+    time.sleep(0.5)
+    
 
 
 #?---------------------Quote---------------------# 
