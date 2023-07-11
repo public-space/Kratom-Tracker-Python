@@ -8,12 +8,13 @@ def create_database():
     # Create the table for dose tracking
 
         cursor.execute("""
-                        CREATE TABLE IF NOT EXISTS doses (
-                            id INTEGER PRIMARY KEY AUTOINCREMENT, 
-                            timestamp TEXT, 
-                            quantity REAL
-                        )
-                        """)
+    CREATE TABLE IF NOT EXISTS doses (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        quantity REAL,
+        quantity_type TEXT
+    )
+""")
 
         connection.commit()
         connection.close()

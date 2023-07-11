@@ -4,20 +4,22 @@ from datetime import datetime
 def log_dose(quantity_type, quantity):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
+    connection = sqlite3.connect("C:/Users/publi/Kratom-Tracker-Python/kratom_tracking_app/database/kratom.db")
+
     cursor = connection.cursor()
     
     #! Insert the dose into the "doses" table
     
-    cursor.execute("INSERT INTO doses (timestamp, quantity_type, quantity) VALUES (?, ?)", (timestamp, quantity_type, quantity))
+    cursor.execute("INSERT INTO doses (timestamp, quantity_type, quantity) VALUES (?, ?, ?)", (timestamp, quantity_type, quantity))
     
     connection.commit()
     connection.close()
     
-    return timestamp()
+    return timestamp
     
 def get_dose_data():
-    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
+    connection = sqlite3.connect("C:/Users/publi/Kratom-Tracker-Python/kratom_tracking_app/database/kratom.db")
+
     cursor = connection.cursor()
     
     # Retrieve all dose data from the 'doses' table

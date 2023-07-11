@@ -1,11 +1,11 @@
 import sqlite3
 
 def calculate_total_doses(): 
-    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
+    connection = sqlite3.connect("C:/Users/publi/Kratom-Tracker-Python/kratom_tracking_app/database/kratom.db")
+
     cursor = connection.cursor()
     
     #? Count the number of rows in the 'doses' table
-    
     cursor.execute("SELECT COUNT(*) FROM doses")
     total_doses = cursor.fetchone()[0]
     
@@ -14,7 +14,8 @@ def calculate_total_doses():
     return total_doses
 
 def calculate_dose_frequency():
-    connection = sqlite3.connect("kratom_tracking_app\database\kratom.db")
+    connection = sqlite3.connect("C:/Users/publi/Kratom-Tracker-Python/kratom_tracking_app/database/kratom.db")
+
     cursor = connection.cursor()
     
     #!TODO 
